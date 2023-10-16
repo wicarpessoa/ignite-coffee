@@ -1,9 +1,14 @@
-import './App.css'
+import { Card } from "./components/card"
+import { Header } from "./components/header"
+import { Home } from "./pages"
 
 function App() {
 
   return (
-   <h1>hello world</h1>
+    <>
+    <Header/>
+    <Home/>
+    </>
   )
 }
 
