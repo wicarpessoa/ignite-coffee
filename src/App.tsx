@@ -1,12 +1,11 @@
-import { Header } from "./components/header"
-import { Checkout } from "./pages/Checkout"
+import { Header } from './components/header'
+import { Checkout } from './pages/Checkout'
 
 function App() {
-
   return (
     <>
-    <Header/>
-    <Checkout/>
+      <Header />
+      <Checkout />
     </>
   )
 }

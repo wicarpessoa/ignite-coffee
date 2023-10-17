@@ -1,7 +1,9 @@
 import { TagContainer } from './styles'
 
-export  function Tag() {
+export function Tag() {
   return (
-    <TagContainer><span>TRADICIONAL</span></TagContainer>
+    <TagContainer>
+      <span>TRADICIONAL</span>
+    </TagContainer>
   )
 }
