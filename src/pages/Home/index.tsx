@@ -1,6 +1,8 @@
 import { Clock, Coffee, ShoppingCart, Package  } from "@phosphor-icons/react";
-import { HeroContainer, HomeContainer } from "./styles";
-import HeroImg from '../assets/Imagem.svg'
+import { CoffeesContainer, HeroContainer, HomeContainer } from "./styles";
+import HeroImg from '../../assets/Imagem.svg'
+import { Card } from "../../components/card";
+
 export  function Home() {
   return (
     <HomeContainer>
@@ -19,6 +21,30 @@ export  function Home() {
           <img src={HeroImg} alt="" />
         </div>
       </HeroContainer>
+      <CoffeesContainer>
+        <h1>Nossos cafés</h1>
+        <div>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+        </div>
+      </CoffeesContainer>
     </HomeContainer>
     
   )

@@ -1,13 +1,12 @@
-import { Card } from "./components/card"
 import { Header } from "./components/header"
-import { Home } from "./pages"
+import { Checkout } from "./pages/Checkout"
 
 function App() {
 
   return (
     <>
     <Header/>
-    <Home/>
+    <Checkout/>
     </>
   )
 }
