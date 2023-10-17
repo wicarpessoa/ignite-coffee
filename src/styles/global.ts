@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -18,7 +18,9 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
-
+input {
+  outline: none;
+}
 button {
   border: none;
 }

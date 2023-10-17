@@ -43,27 +43,6 @@ export const TagsContainer = styled.div`
   gap: 4px;
   margin-bottom: 1rem;
 `
-export const CounterContainer = styled.div`
-  background-color: ${(props) => props.theme['base-button']};
-  border-radius: 6px;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  padding: 8px;
-  height: 38px;
-  justify-content: center;
-  > button {
-    border: 0;
-    background-color: transparent;
-    color: ${(props) => props.theme.purple};
-    cursor: pointer;
-    width: 20px;
-  }
-  > span {
-    font: ${(props) => props.theme['roboto-md']};
-    font-weight: 400;
-  }
-`
 
 export const ControllerContainer = styled.div`
   display: flex;

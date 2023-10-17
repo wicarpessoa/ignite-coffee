@@ -1,13 +1,15 @@
-import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
+import { CurrencyDollar, MapPinLine, Trash } from '@phosphor-icons/react'
 import {
   CheckoutAdressContainer,
   CheckoutCartContainer,
   CheckoutContainer,
+  CheckoutInfoContainer,
   CheckoutPaymentContainer,
 } from './styles'
 import Image1 from '../../assets/Image-1.png'
 import RadioSelect from './components/RadioSelect'
 import Form from './components/Form'
+import { Counter } from '../../components/Counter'
 export function Checkout() {
   return (
     <CheckoutContainer>
@@ -44,12 +46,42 @@ export function Checkout() {
             <div>
               <span>Expresso Tradicional</span>
               <div>
-                <button></button>
-                <button></button>
+                <Counter />
+                <button>
+                  <Trash color="#8047F8" size={16} /> REMOVER
+                </button>
               </div>
             </div>
-            <span>RS 9,90</span>
+            <span>R$ 9,90</span>
           </div>
+          <div>
+            <img src={Image1} alt="" />
+            <div>
+              <span>Expresso Tradicional</span>
+              <div>
+                <Counter />
+                <button>
+                  <Trash color="#8047F8" size={16} /> REMOVER
+                </button>
+              </div>
+            </div>
+            <span>R$ 9,90</span>
+          </div>
+          <CheckoutInfoContainer>
+            <div>
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </div>
+            <button>CONFIRMAR PEDIDO</button>
+          </CheckoutInfoContainer>
         </CheckoutCartContainer>
       </div>
     </CheckoutContainer>

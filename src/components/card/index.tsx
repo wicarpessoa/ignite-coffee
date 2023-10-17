@@ -1,14 +1,14 @@
 import {
   CardContainer,
   ControllerContainer,
-  CounterContainer,
   ImgContainer,
   TagsContainer,
   TextCardContainer,
 } from './styles'
 import Coffe1 from '../../assets/Image-1.png'
 import { Tag } from '../tag'
-import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
+import { ShoppingCartSimple } from '@phosphor-icons/react'
+import { Counter } from '../Counter'
 export function Card() {
   return (
     <CardContainer>
@@ -25,16 +25,7 @@ export function Card() {
       <ControllerContainer>
         <span>9,90</span>
         <div>
-          <CounterContainer>
-            <button>
-              <Minus size={12} weight="bold" />{' '}
-            </button>
-            <span>1</span>
-            <button>
-              {' '}
-              <Plus size={12} weight="bold" />{' '}
-            </button>
-          </CounterContainer>
+          <Counter />
           <button>
             <ShoppingCartSimple size={20} />
           </button>

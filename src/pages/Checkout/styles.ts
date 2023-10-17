@@ -4,7 +4,7 @@ export const CheckoutContainer = styled.div`
   display: flex;
   margin: 0 auto;
   max-width: 1184px;
-  gap: 2rem;
+  gap: 2.5rem;
   padding: 2rem;
   > div {
     > h2 {
@@ -12,38 +12,8 @@ export const CheckoutContainer = styled.div`
       color: ${(props) => props.theme['base-subtitle']};
     }
   }
-`
-export const CheckoutCartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 36rem;
-  margin-top: 1rem;
-  padding: 2.5rem;
-  background: ${(props) => props.theme['base-card']};
-  border-radius: 6px 44px 6px 44px;
-  > div {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid ${(props) => props.theme['base-button']};
-    display: flex;
-    > img {
-      height: 4rem;
-      width: auto;
-      object-fit: cover;
-      margin-right: 1.25rem;
-    }
-    > div {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-right: 3.125rem;
-      > span {
-        white-space: nowrap;
-      }
-    }
-    > span {
-      white-space: nowrap;
-    }
+  > div:nth-of-type(2) {
+    flex: 1;
   }
 `
 
@@ -89,5 +59,104 @@ export const CheckoutPaymentContainer = styled.div`
       color: ${(props) => props.theme['base-text']};
       font: ${(props) => props.theme['roboto-sm']};
     }
+  }
+`
+
+export const CheckoutCartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 36rem;
+  margin-top: 1rem;
+  padding: 1.5rem 2.5rem 2.5rem;
+  background: ${(props) => props.theme['base-card']};
+  border-radius: 6px 44px 6px 44px;
+  > div:nth-of-type(1),
+  > div:nth-of-type(2) {
+    display: flex;
+    padding: 1.5rem 0 1.5rem;
+    border-bottom: 1px solid ${(props) => props.theme['base-button']};
+    > img {
+      height: 4rem;
+      width: auto;
+      object-fit: cover;
+      margin-right: 1.25rem;
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-right: 22px;
+      gap: 8px;
+      > div:nth-of-type(1) {
+        display: flex;
+        gap: 8px;
+        > button:nth-of-type(1) {
+          display: flex;
+          padding: 8px;
+          align-items: center;
+          background: ${(props) => props.theme['base-button']};
+          border-radius: 6px;
+
+          font: ${(props) => props.theme['button-m']};
+          font-weight: 400;
+          gap: 4px;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            background: ${(props) => props.theme['base-hover']};
+          }
+        }
+      }
+      > span {
+        font: ${(props) => props.theme['roboto-md']};
+        font-weight: 400;
+        color: ${(props) => props.theme['base-subtitle']};
+
+        white-space: nowrap;
+      }
+    }
+    > span {
+      font: ${(props) => props.theme['roboto-md']};
+      color: ${(props) => props.theme['base-text']};
+
+      white-space: nowrap;
+    }
+  }
+`
+
+export const CheckoutInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  > div:nth-of-type(1),
+  > div:nth-of-type(2) {
+    > span {
+      font: ${(props) => props.theme['roboto-sm']};
+      color: ${(props) => props.theme['base-text']};
+    }
+  }
+  > div:nth-of-type(3) {
+    > span {
+      font: ${(props) => props.theme['roboto-l']};
+      color: ${(props) => props.theme['base-subtitle']};
+    }
+  }
+  > button {
+    margin-top: 12px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 12px 0;
+    background-color: ${(props) => props.theme.yellow};
+    border-radius: 6px;
+    font: ${(props) => props.theme['button-g']};
+    color: ${(props) => props.theme.white};
   }
 `

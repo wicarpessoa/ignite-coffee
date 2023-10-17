@@ -36,9 +36,14 @@ export const FormContainer = styled.form`
 
   input {
     background-color: ${(props) => props.theme['base-input']};
+    font: ${(props) => props.theme['roboto-sm']};
+    color: ${(props) => props.theme['base-text']};
     border: none;
     padding: 12px;
     border-radius: 4px;
     width: 100%;
+    &:placeholder {
+      color: ${(props) => props.theme['base-label']};
+    }
   }
 `
