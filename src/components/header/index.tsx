@@ -1,6 +1,6 @@
-import { HeaderContainer } from './styles'
 import Logo from '../../assets/Logo.svg'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import { HeaderContainer } from './styles'
 export function Header() {
   return (
     <HeaderContainer>

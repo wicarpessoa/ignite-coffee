@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const CheckoutContainer = styled.div`
   display: flex;
   margin: 0 auto;
-  max-width: 1184px;
+  width: 100%;
   gap: 2.5rem;
-  padding: 2rem;
   > div {
     > h2 {
       font: ${(props) => props.theme['baloo2-xs']};

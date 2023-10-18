@@ -2,11 +2,10 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
-  padding: 2rem;
+  width: 100%;
   justify-content: space-between;
+  padding: 2rem 0;
   align-items: center;
-  max-width: 1184px;
-  margin: 0 auto;
   > div {
     display: flex;
     gap: 12px;
