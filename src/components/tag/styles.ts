@@ -8,7 +8,7 @@ export const TagContainer = styled.div`
   align-items: center;
   justify-content: center;
   > span {
-    font: ${(props) => props.theme.tag};
+    font: var(--tag);
     color: ${(props) => props.theme['yellow-dark']};
     align-self: center;
   }

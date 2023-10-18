@@ -6,10 +6,14 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 2rem 0;
   align-items: center;
+  > button:nth-of-type(1) {
+    background-color: transparent;
+    cursor: pointer;
+  }
   > div {
     display: flex;
     gap: 12px;
-    > div {
+    > button:nth-of-type(1) {
       display: flex;
       gap: 4px;
       align-items: center;
@@ -19,7 +23,7 @@ export const HeaderContainer = styled.header`
       color: ${(props) => props.theme.purple};
 
       > span {
-        font: ${(props) => props.theme['roboto-sm']};
+        font: var(--roboto-sm);
       }
     }
     > button {

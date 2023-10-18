@@ -21,7 +21,7 @@ export const CounterContainer = styled.div`
     }
   }
   > span {
-    font: ${(props) => props.theme['roboto-md']};
+    font: var(--roboto-md);
     font-weight: 400;
   }
 `

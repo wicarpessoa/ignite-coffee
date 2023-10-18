@@ -1,14 +1,14 @@
-import {
-  CardContainer,
-  ControllerContainer,
-  ImgContainer,
-  TagsContainer,
-  TextCardContainer,
-} from './styles'
 import Coffe1 from '../../assets/Image-1.png'
 import { Tag } from '../tag'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { Counter } from '../Counter'
+import {
+  CardContainer,
+  TextCardContainer,
+  ImgContainer,
+  TagsContainer,
+  ControllerContainer,
+} from './styles'
 export function Card() {
   return (
     <CardContainer>
