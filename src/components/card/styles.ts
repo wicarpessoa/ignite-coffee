@@ -17,12 +17,12 @@ export const TextCardContainer = styled.div`
   align-items: center;
   margin-top: -20px;
   > p {
-    font: ${(props) => props.theme['roboto-sm']};
+    font: var(--roboto-sm);
     color: ${(props) => props.theme['base-label']};
     text-align: center;
   }
   > span {
-    font: ${(props) => props.theme['baloo2-sm']};
+    font: var(--baloo2-sm);
     color: ${(props) => props.theme['base-subtitle']};
     margin-bottom: 0.5rem;
   }
@@ -62,14 +62,18 @@ export const ControllerContainer = styled.div`
       border-radius: 6px;
       padding: 10px 8px;
       cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background-color: ${(props) => props.theme.purple};
+      }
     }
   }
   > span {
-    font: ${(props) => props.theme['baloo2-md']};
+    font: var(--baloo2-md);
     color: ${(props) => props.theme['base-text']};
     &::before {
       content: 'R$ ';
-      font: ${(props) => props.theme['roboto-sm']};
+      font: var(--roboto-sm);
     }
   }
 `

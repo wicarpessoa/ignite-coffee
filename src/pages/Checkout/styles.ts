@@ -7,7 +7,7 @@ export const CheckoutContainer = styled.div`
   gap: 2.5rem;
   > div {
     > h2 {
-      font: ${(props) => props.theme['baloo2-xs']};
+      font: var(--baloo2-xs);
       color: ${(props) => props.theme['base-subtitle']};
     }
   }
@@ -28,7 +28,7 @@ export const CheckoutAdressContainer = styled.div`
     gap: 8px;
     margin-bottom: 2rem;
     h2 {
-      font: ${(props) => props.theme['roboto-md']};
+      font: var(--roboto-md);
       font-weight: 400;
       color: ${(props) => props.theme['base-subtitle']};
     }
@@ -50,13 +50,13 @@ export const CheckoutPaymentContainer = styled.div`
     display: flex;
     gap: 8px;
     h2 {
-      font: ${(props) => props.theme['roboto-md']};
+      font: var(--roboto-md);
       font-weight: 400;
       color: #403937;
     }
     p {
       color: ${(props) => props.theme['base-text']};
-      font: ${(props) => props.theme['roboto-sm']};
+      font: var(--roboto-sm);
     }
   }
 `
@@ -97,7 +97,7 @@ export const CheckoutCartContainer = styled.div`
           background: ${(props) => props.theme['base-button']};
           border-radius: 6px;
 
-          font: ${(props) => props.theme['button-m']};
+          font: var(--button-m);
           font-weight: 400;
           gap: 4px;
           cursor: pointer;
@@ -108,7 +108,7 @@ export const CheckoutCartContainer = styled.div`
         }
       }
       > span {
-        font: ${(props) => props.theme['roboto-md']};
+        font: var(--roboto-md);
         font-weight: 400;
         color: ${(props) => props.theme['base-subtitle']};
 
@@ -116,7 +116,7 @@ export const CheckoutCartContainer = styled.div`
       }
     }
     > span {
-      font: ${(props) => props.theme['roboto-md']};
+      font: var(--roboto-md);
       color: ${(props) => props.theme['base-text']};
 
       white-space: nowrap;
@@ -137,13 +137,13 @@ export const CheckoutInfoContainer = styled.div`
   > div:nth-of-type(1),
   > div:nth-of-type(2) {
     > span {
-      font: ${(props) => props.theme['roboto-sm']};
+      font: var(--roboto-sm);
       color: ${(props) => props.theme['base-text']};
     }
   }
   > div:nth-of-type(3) {
     > span {
-      font: ${(props) => props.theme['roboto-l']};
+      font: var(--roboto-l);
       color: ${(props) => props.theme['base-subtitle']};
     }
   }
@@ -155,7 +155,7 @@ export const CheckoutInfoContainer = styled.div`
     padding: 12px 0;
     background-color: ${(props) => props.theme.yellow};
     border-radius: 6px;
-    font: ${(props) => props.theme['button-g']};
+    font: var(--button-g);
     color: ${(props) => props.theme.white};
   }
 `

@@ -4,28 +4,45 @@ export const HomeContainer = styled.div`
   max-width: 1184px;
   width: 100%;
   margin: 0 auto;
-  padding: 6rem 0 10rem;
+  padding-bottom: 10rem;
 `
-
 export const HeroContainer = styled.section`
   display: flex;
   width: 100%;
+  min-height: calc(100dvh - 108px);
   justify-content: space-between;
-  align-items: space-between;
-  margin-bottom: 9rem;
+  align-items: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(./src/assets/Background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+`
+export const HeroContent = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
   > div {
     display: flex;
     flex-direction: column;
+    align-items: space-between;
     max-width: 588px;
     > h1 {
-      font: ${(props) => props.theme['baloo2-xl']};
+      font: var(--baloo2-xl);
       color: ${(props) => props.theme['base-title']};
       margin-bottom: 1rem;
     }
     > p {
-      font: ${(props) => props.theme['roboto-l']};
+      font: var(--roboto-l);
       font-weight: 400;
       color: ${(props) => props.theme['base-subtitle']};
+      margin-bottom: 4rem;
     }
     > ul {
       display: grid;
@@ -70,7 +87,7 @@ export const CoffeesContainer = styled.section`
   width: 100%;
   gap: 3.5rem;
   > h1 {
-    font: ${(props) => props.theme['baloo2-l']};
+    font: var(--baloo2-l);
     color: ${(props) => props.theme['base-subtitle']};
   }
   > div {

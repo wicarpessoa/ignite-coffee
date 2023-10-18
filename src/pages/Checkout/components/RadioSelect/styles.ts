@@ -20,7 +20,7 @@ export const RadioContainer = styled.div`
     transition: all 0.2s ease-in-out;
     white-space: nowrap;
     > span {
-      font: ${(props) => props.theme['button-m']};
+      font: var(--button-m);
       font-weight: 400;
       color: ${(props) => props.theme['base-text']};
     }
