@@ -2,11 +2,13 @@ import { ReactNode, createContext, useReducer } from 'react'
 import { CartItemProps, cartReducer } from '../reducers/cart/reducer'
 import {
   addCartItemAction,
+  addCountOnItemCartAction,
   removeCartItemAction,
+  subCountOnItemCartAction,
 } from '../reducers/cart/actions'
-import { v4 as uuidv4 } from 'uuid'
 
 interface CreateCartItem {
+  id: string
   title: string
   description: string
   imgUrl: string
@@ -17,7 +19,9 @@ interface CreateCartItem {
 interface CartContextType {
   cart: CartItemProps[]
   addNewCartItem: (data: CreateCartItem) => void
-  removeCartItem: () => void
+  removeCartItem: (id: string) => void
+  addCountOnItemCart: (id: string) => void
+  subCountOnItemCart: (id: string) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -32,10 +36,10 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   })
   const { cart } = cartState
   function addNewCartItem(data: CreateCartItem) {
-    const { description, imgUrl, quantity, title, type } = data
+    const { description, imgUrl, quantity, title, type, id } = data
     const newCartItem: CartItemProps = {
       description,
-      id: uuidv4(),
+      id,
       imgUrl,
       quantity,
       title,
@@ -45,12 +49,27 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
     dispatch(addCartItemAction(newCartItem))
   }
 
-  function removeCartItem() {
-    dispatch(removeCartItemAction())
+  function removeCartItem(itemId: string) {
+    dispatch(removeCartItemAction(itemId))
+  }
+
+  function addCountOnItemCart(itemId: string) {
+    dispatch(addCountOnItemCartAction(itemId))
+  }
+  function subCountOnItemCart(itemId: string) {
+    dispatch(subCountOnItemCartAction(itemId))
   }
 
   return (
-    <CartContext.Provider value={{ addNewCartItem, removeCartItem, cart }}>
+    <CartContext.Provider
+      value={{
+        addNewCartItem,
+        removeCartItem,
+        addCountOnItemCart,
+        cart,
+        subCountOnItemCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

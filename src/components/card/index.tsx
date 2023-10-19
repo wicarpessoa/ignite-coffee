@@ -13,6 +13,7 @@ import { ComponentProps, useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
 
 interface CoffeeProps {
+  id: string
   title: string
   description: string
   imgUrl: string
@@ -56,6 +57,7 @@ export function Card({ data }: cardComponentProps) {
           <button
             onClick={() => {
               addNewCartItem({
+                id: data.id,
                 title: data.title,
                 description: data.description,
                 imgUrl: data.imgUrl,
