@@ -9,7 +9,30 @@ import {
   TagsContainer,
   ControllerContainer,
 } from './styles'
-export function Card() {
+import { ComponentProps, useContext, useState } from 'react'
+import { CartContext } from '../../context/CartContext'
+
+interface CoffeeProps {
+  title: string
+  description: string
+  imgUrl: string
+  type: string[]
+  price: number
+}
+
+interface cardComponentProps extends ComponentProps<'div'> {
+  data: CoffeeProps
+}
+export function Card({ data }: cardComponentProps) {
+  const { addNewCartItem, cart } = useContext(CartContext)
+  console.log(cart)
+  const [count, setCount] = useState(1)
+  function onHandleAddCounter() {
+    setCount((prevState) => prevState + 1)
+  }
+  function onHandleSubCounter() {
+    setCount((prevState) => prevState - 1)
+  }
   return (
     <CardContainer>
       <TextCardContainer>
@@ -19,14 +42,30 @@ export function Card() {
         <TagsContainer>
           <Tag />
         </TagsContainer>
-        <span>Expresso Tradicional</span>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <span>{data.title}</span>
+        <p>{data.description}</p>
       </TextCardContainer>
       <ControllerContainer>
-        <span>9,90</span>
+        <span>{data.price}</span>
         <div>
-          <Counter />
-          <button>
+          <Counter
+            onHandleAddCounter={onHandleAddCounter}
+            onHandleSubCounter={onHandleSubCounter}
+            count={count}
+          />
+          <button
+            onClick={() => {
+              addNewCartItem({
+                title: data.title,
+                description: data.description,
+                imgUrl: data.imgUrl,
+                type: data.type,
+                quantity: count,
+              })
+
+              setCount(1)
+            }}
+          >
             <ShoppingCartSimple size={20} />
           </button>
         </div>

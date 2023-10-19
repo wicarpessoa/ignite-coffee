@@ -157,5 +157,10 @@ export const CheckoutInfoContainer = styled.div`
     border-radius: 6px;
     font: var(--button-g);
     color: ${(props) => props.theme.white};
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: ${(props) => props.theme['yellow-dark']};
+    }
   }
 `

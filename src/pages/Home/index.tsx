@@ -9,6 +9,109 @@ import HeroImg from '../../assets/Imagem.svg'
 import { Card } from '../../components/Card'
 
 export function Home() {
+  const coffesList = [
+    {
+      title: 'Expresso Tradicional',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: 'test',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Expresso Americano',
+      description: 'Expresso diluído, menos intenso que o tradicional',
+      imgUrl: 'test',
+
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Expresso Cremoso',
+      description: 'Café expresso tradicional com espuma cremosa',
+      imgUrl: 'test',
+
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Expresso Gelado',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional', 'Gelado'],
+      price: 9.9,
+    },
+    {
+      title: 'Café com Leite',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Latte',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Capuccino',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Macchiato',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Mocaccino',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Chocolate Quente',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Cubano',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Havaiano',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Árabe',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+    {
+      title: 'Irlandês',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      imgUrl: '',
+      type: ['Tradicional'],
+      price: 9.9,
+    },
+  ]
+
   return (
     <HomeContainer>
       <HeroContainer>
@@ -54,25 +157,9 @@ export function Home() {
       <CoffeesContainer>
         <h1>Nossos cafés</h1>
         <div>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {coffesList.map((coffeeItem) => {
+            return <Card key={coffeeItem.title} data={coffeeItem} />
+          })}
         </div>
       </CoffeesContainer>
     </HomeContainer>
