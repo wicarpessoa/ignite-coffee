@@ -26,14 +26,5 @@ export const HeaderContainer = styled.header`
         font: var(--roboto-sm);
       }
     }
-    > button {
-      height: 38px;
-      border: 0;
-      background-color: ${(props) => props.theme['yellow-light']};
-      color: ${(props) => props.theme['yellow-dark']};
-      border-radius: 6px;
-      padding: 10px 8px;
-      cursor: pointer;
-    }
   }
 `

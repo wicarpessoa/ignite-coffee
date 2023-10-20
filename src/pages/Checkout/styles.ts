@@ -72,55 +72,6 @@ export const CheckoutCartContainer = styled.div`
   border-radius: 6px 44px 6px 44px;
   > div:nth-of-type(1),
   > div:nth-of-type(2) {
-    display: flex;
-    padding: 1.5rem 0 1.5rem;
-    border-bottom: 1px solid ${(props) => props.theme['base-button']};
-    > img {
-      height: 4rem;
-      width: auto;
-      object-fit: cover;
-      margin-right: 1.25rem;
-    }
-    > div {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-right: 22px;
-      gap: 8px;
-      > div:nth-of-type(1) {
-        display: flex;
-        gap: 8px;
-        > button:nth-of-type(1) {
-          display: flex;
-          padding: 8px;
-          align-items: center;
-          background: ${(props) => props.theme['base-button']};
-          border-radius: 6px;
-
-          font: var(--button-m);
-          font-weight: 400;
-          gap: 4px;
-          cursor: pointer;
-          transition: all 0.2s ease-in-out;
-          &:hover {
-            background: ${(props) => props.theme['base-hover']};
-          }
-        }
-      }
-      > span {
-        font: var(--roboto-md);
-        font-weight: 400;
-        color: ${(props) => props.theme['base-subtitle']};
-
-        white-space: nowrap;
-      }
-    }
-    > span {
-      font: var(--roboto-md);
-      color: ${(props) => props.theme['base-text']};
-
-      white-space: nowrap;
-    }
   }
 `
 
@@ -162,5 +113,57 @@ export const CheckoutInfoContainer = styled.div`
     &:hover {
       background-color: ${(props) => props.theme['yellow-dark']};
     }
+  }
+`
+
+export const CheckoutCardInfoContainer = styled.div`
+  display: flex;
+  padding: 1.5rem 0 1.5rem;
+  border-bottom: 1px solid ${(props) => props.theme['base-button']};
+  > img {
+    height: 4rem;
+    width: auto;
+    object-fit: cover;
+    margin-right: 1.25rem;
+  }
+  > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 22px;
+    gap: 8px;
+    > div:nth-of-type(1) {
+      display: flex;
+      gap: 8px;
+      > button:nth-of-type(1) {
+        display: flex;
+        padding: 8px;
+        align-items: center;
+        background: ${(props) => props.theme['base-button']};
+        border-radius: 6px;
+
+        font: var(--button-m);
+        font-weight: 400;
+        gap: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background: ${(props) => props.theme['base-hover']};
+        }
+      }
+    }
+    > span {
+      font: var(--roboto-md);
+      font-weight: 400;
+      color: ${(props) => props.theme['base-subtitle']};
+
+      white-space: nowrap;
+    }
+  }
+  > span {
+    font: var(--roboto-md);
+    color: ${(props) => props.theme['base-text']};
+
+    white-space: nowrap;
   }
 `

@@ -1,6 +1,7 @@
 import { CurrencyDollar, MapPinLine, Trash } from '@phosphor-icons/react'
 import {
   CheckoutAdressContainer,
+  CheckoutCardInfoContainer,
   CheckoutCartContainer,
   CheckoutContainer,
   CheckoutInfoContainer,
@@ -10,7 +11,13 @@ import Image1 from '../../assets/Image-1.png'
 import RadioSelect from './components/RadioSelect'
 import Form from './components/Form'
 import { Counter } from '../../components/Counter'
+import { CartContext } from '../../context/CartContext'
+import { useContext } from 'react'
+import { numberToCurrency } from '../../utils/numberToCurrency'
+
 export function Checkout() {
+  const { cart, addCountOnItemCart, subCountOnItemCart } =
+    useContext(CartContext)
   return (
     <CheckoutContainer>
       <div>
@@ -41,32 +48,36 @@ export function Checkout() {
       <div>
         <h2>Cafés selecionados</h2>
         <CheckoutCartContainer>
-          <div>
-            <img src={Image1} alt="" />
-            <div>
-              <span>Expresso Tradicional</span>
-              <div>
-                <Counter />
-                <button>
-                  <Trash color="#8047F8" size={16} /> REMOVER
-                </button>
-              </div>
-            </div>
-            <span>R$ 9,90</span>
-          </div>
-          <div>
-            <img src={Image1} alt="" />
-            <div>
-              <span>Expresso Tradicional</span>
-              <div>
-                <Counter />
-                <button>
-                  <Trash color="#8047F8" size={16} /> REMOVER
-                </button>
-              </div>
-            </div>
-            <span>R$ 9,90</span>
-          </div>
+          {cart &&
+            cart.map((cartItem) => {
+              const FormattedToCurrency = numberToCurrency(
+                cartItem.price * cartItem.quantity,
+              )
+              return (
+                <CheckoutCardInfoContainer key={cartItem.id}>
+                  <img src={Image1} alt="" />
+                  <div>
+                    <span>{cartItem.title}</span>
+                    <div>
+                      <Counter
+                        count={cartItem.quantity}
+                        onHandleAddCounter={() => {
+                          addCountOnItemCart(cartItem.id)
+                        }}
+                        onHandleSubCounter={() => {
+                          subCountOnItemCart(cartItem.id)
+                        }}
+                      />
+                      <button>
+                        <Trash color="#8047F8" size={16} /> REMOVER
+                      </button>
+                    </div>
+                  </div>
+                  <span>{FormattedToCurrency}</span>
+                </CheckoutCardInfoContainer>
+              )
+            })}
+
           <CheckoutInfoContainer>
             <div>
               <span>Total de itens</span>

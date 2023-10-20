@@ -11,6 +11,7 @@ interface CreateCartItem {
   id: string
   title: string
   description: string
+  price: number
   imgUrl: string
   type: string[]
   quantity: number
@@ -36,13 +37,14 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   })
   const { cart } = cartState
   function addNewCartItem(data: CreateCartItem) {
-    const { description, imgUrl, quantity, title, type, id } = data
+    const { description, imgUrl, quantity, title, type, id, price } = data
     const newCartItem: CartItemProps = {
-      description,
       id,
-      imgUrl,
-      quantity,
+      description,
       title,
+      price,
+      quantity,
+      imgUrl,
       type,
     }
 

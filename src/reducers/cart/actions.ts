@@ -1,4 +1,4 @@
-import { CartItemProps, CartItemProps } from './reducer'
+import { CartItemProps } from './reducer'
 
 export enum ActionTypes {
   ADD_NEW_CART_ITEM = 'ADD_NEW_CART_ITEM',

@@ -25,8 +25,7 @@ interface cardComponentProps extends ComponentProps<'div'> {
   data: CoffeeProps
 }
 export function Card({ data }: cardComponentProps) {
-  const { addNewCartItem, cart } = useContext(CartContext)
-  console.log(cart)
+  const { addNewCartItem } = useContext(CartContext)
   const [count, setCount] = useState(1)
   function onHandleAddCounter() {
     setCount((prevState) => prevState + 1)
@@ -60,6 +59,7 @@ export function Card({ data }: cardComponentProps) {
                 id: data.id,
                 title: data.title,
                 description: data.description,
+                price: data.price,
                 imgUrl: data.imgUrl,
                 type: data.type,
                 quantity: count,

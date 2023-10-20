@@ -1,7 +1,7 @@
 import { CreditCard, Bank, Money } from '@phosphor-icons/react'
 import { RadioContainer } from './styles'
 import * as Radio from '@radix-ui/react-radio-group'
-export default function index() {
+export default function RadioSelect() {
   return (
     <RadioContainer>
       <Radio.Root className="RadioGroupRoot" aria-label="View density">

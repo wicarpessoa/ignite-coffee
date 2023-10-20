@@ -4,6 +4,7 @@ export interface CartItemProps {
   id: string
   title: string
   description: string
+  price: number
   imgUrl: string
   type: string[]
   quantity: number
@@ -24,6 +25,7 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       }
     case ActionTypes.ADD_COUNT_ON_ITEM:
+      console.log(action.payload)
       return state
     case ActionTypes.SUB_COUNT_ON_ITEM:
       return state
