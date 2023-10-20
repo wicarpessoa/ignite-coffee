@@ -16,7 +16,7 @@ import { useContext } from 'react'
 import { numberToCurrency } from '../../utils/numberToCurrency'
 
 export function Checkout() {
-  const { cart, addCountOnItemCart, subCountOnItemCart } =
+  const { cart, addCountOnItemCart, subCountOnItemCart, removeCartItem } =
     useContext(CartContext)
   return (
     <CheckoutContainer>
@@ -68,7 +68,11 @@ export function Checkout() {
                           subCountOnItemCart(cartItem.id)
                         }}
                       />
-                      <button>
+                      <button
+                        onClick={() => {
+                          removeCartItem(cartItem.id)
+                        }}
+                      >
                         <Trash color="#8047F8" size={16} /> REMOVER
                       </button>
                     </div>

@@ -46,7 +46,7 @@ export function addCountOnItemCartAction(itemId: string): ActionTypesProps {
 }
 export function subCountOnItemCartAction(itemId: string): ActionTypesProps {
   return {
-    type: ActionTypes.REMOVE_CART_ITEM,
+    type: ActionTypes.SUB_COUNT_ON_ITEM,
     payload: {
       id: itemId,
     },

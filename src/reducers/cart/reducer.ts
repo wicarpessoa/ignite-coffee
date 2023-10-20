@@ -25,10 +25,23 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       }
     case ActionTypes.ADD_COUNT_ON_ITEM:
-      console.log(action.payload)
-      return state
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        ),
+      }
     case ActionTypes.SUB_COUNT_ON_ITEM:
-      return state
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item,
+        ),
+      }
     default:
       return state
   }
