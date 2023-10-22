@@ -1,29 +1,22 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
-import { SuccessContainer, OrderInfo, SuccessInfoContainer } from './styles'
+import {
+  SuccessContainer,
+  OrderInfo,
+  SuccessInfoContainer,
+  SuccessImgContainer,
+} from './styles'
 
 export function Success() {
   return (
     <SuccessContainer>
+      <h2>Uhu! Pedido confirmado</h2>
+      <span>Agora é só aguardar que logo o café chegará até você</span>
       <div>
-        <h2>Uhu! Pedido confirmado</h2>
-        <span>Agora é só aguardar que logo o café chegará até você</span>
         <SuccessInfoContainer>
-          <OrderInfo>
-            <div>
-              <MapPin />
-              <div>
-                <span>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
-                </span>
-                <span>Farrapos - Porto Alegre, RS</span>
-              </div>
-            </div>
-          </OrderInfo>
-
-          <OrderInfo>
+          <OrderInfo $color="purple">
             <div>
               <div>
-                <Timer />
+                <MapPin color="#FAFAFA" weight="bold" />
               </div>
               <div>
                 <span>
@@ -34,20 +27,39 @@ export function Success() {
             </div>
           </OrderInfo>
 
-          <OrderInfo>
+          <OrderInfo $color="yellow">
             <div>
               <div>
-                <CurrencyDollar />
+                <Timer color="#FAFAFA" weight="bold" />
               </div>
+
               <div>
+                <span>Previsão de entrega</span>
                 <span>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  <strong>20 min - 30 min </strong>
                 </span>
-                <span>Farrapos - Porto Alegre, RS</span>
+              </div>
+            </div>
+          </OrderInfo>
+
+          <OrderInfo $color="yellow-dark">
+            <div>
+              <div>
+                <CurrencyDollar color="#FAFAFA" weight="bold" />
+              </div>
+
+              <div>
+                <span>Pagamento na entrega</span>
+                <span>
+                  <strong>Cartão de Crédito</strong>
+                </span>
               </div>
             </div>
           </OrderInfo>
         </SuccessInfoContainer>
+        <SuccessImgContainer>
+          <img src="./src/assets/successImg.svg" alt="" />
+        </SuccessImgContainer>
       </div>
     </SuccessContainer>
   )
