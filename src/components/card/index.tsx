@@ -11,6 +11,7 @@ import {
 } from './styles'
 import { ComponentProps, useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
+import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
 
 interface CoffeeProps {
   id: string
@@ -33,6 +34,7 @@ export function Card({ data }: cardComponentProps) {
   function onHandleSubCounter() {
     setCount((prevState) => prevState - 1)
   }
+  const formattedPrice = numberWithTwoDecimals(data.price)
   return (
     <CardContainer>
       <TextCardContainer>
@@ -46,7 +48,7 @@ export function Card({ data }: cardComponentProps) {
         <p>{data.description}</p>
       </TextCardContainer>
       <ControllerContainer>
-        <span>{data.price}</span>
+        <span>{formattedPrice}</span>
         <div>
           <Counter
             onHandleAddCounter={onHandleAddCounter}
