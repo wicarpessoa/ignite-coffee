@@ -16,10 +16,11 @@ export const ButtonToCartContainer = styled.button<ButtonToCartContainerProps>`
   cursor: pointer;
 
   &:before {
-    content: '2';
+    display: ${(props) => (props.$cartLength ? 'flex' : 'none')};
+
+    content: '${(props) => props.$cartLength}';
     color: ${(props) => props.theme.white};
     font: var(--roboto-xs);
-    display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;

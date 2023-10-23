@@ -16,10 +16,29 @@ interface CartStateProps {
 
 export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
   switch (action.type) {
-    case ActionTypes.ADD_NEW_CART_ITEM:
-      return {
-        cart: [...state.cart, action.payload],
+    case ActionTypes.ADD_NEW_CART_ITEM: {
+      const existingCartItemIndex = state.cart.findIndex(
+        (cartItem) => cartItem.id === action.payload.id,
+      )
+
+      if (existingCartItemIndex !== -1) {
+        const updatedCart = [...state.cart]
+        updatedCart[existingCartItemIndex] = {
+          ...updatedCart[existingCartItemIndex],
+          quantity:
+            updatedCart[existingCartItemIndex].quantity +
+            action.payload.quantity,
+        }
+
+        return {
+          cart: updatedCart,
+        }
+      } else {
+        return {
+          cart: [...state.cart, action.payload],
+        }
       }
+    }
     case ActionTypes.REMOVE_CART_ITEM:
       return {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
