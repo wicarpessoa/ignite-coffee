@@ -7,6 +7,7 @@ import {
   removeCartItemAction,
   subCountOnItemCartAction,
 } from '../reducers/cart/actions'
+import { toast } from 'react-toastify'
 
 interface CreateCartItem {
   id: string
@@ -50,7 +51,11 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
       imgUrl,
       type,
     }
-
+    toast.success(`Item ${title} adicionado com sucesso!`, {
+      toastId: id,
+      autoClose: 1500000,
+      containerId: id,
+    })
     dispatch(addCartItemAction(newCartItem))
   }
 

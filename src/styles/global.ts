@@ -25,7 +25,7 @@ input,button {
   outline: none;
   border: none;
 }
-:focus {
+:focus-visible {
   outline: 0;
   box-shadow: 0 0 0 2px ${(props) => props.theme.yellow};
 }

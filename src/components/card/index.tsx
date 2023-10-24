@@ -12,6 +12,8 @@ import {
 import { ComponentProps, useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
 import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface CoffeeProps {
   id: string
@@ -35,6 +37,7 @@ export function Card({ data }: cardComponentProps) {
     setCount((prevState) => prevState - 1)
   }
   const formattedPrice = numberWithTwoDecimals(data.price)
+
   return (
     <CardContainer>
       <TextCardContainer>
@@ -66,7 +69,10 @@ export function Card({ data }: cardComponentProps) {
                 type: data.type,
                 quantity: count,
               })
-
+              toast.success(`Item ${data.title} adicionado com sucesso!`, {
+                toastId: data.id,
+                autoClose: 1500000,
+              })
               setCount(1)
             }}
           >
