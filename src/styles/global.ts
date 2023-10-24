@@ -21,10 +21,12 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
-input {
+input,button {
   outline: none;
-}
-button {
   border: none;
+}
+:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px ${(props) => props.theme.yellow};
 }
 `

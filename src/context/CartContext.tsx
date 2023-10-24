@@ -2,6 +2,7 @@ import { ReactNode, createContext, useReducer } from 'react'
 import { CartItemProps, cartReducer } from '../reducers/cart/reducer'
 import {
   addCartItemAction,
+  // addCheckoutItemFinishedAction,
   addCountOnItemCartAction,
   removeCartItemAction,
   subCountOnItemCartAction,
@@ -23,6 +24,7 @@ interface CartContextType {
   removeCartItem: (id: string) => void
   addCountOnItemCart: (id: string) => void
   subCountOnItemCart: (id: string) => void
+  // addCheckoutItemFinished: () => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -35,6 +37,7 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   const [cartState, dispatch] = useReducer(cartReducer, {
     cart: [],
   })
+  console.log(cartState)
   const { cart } = cartState
   function addNewCartItem(data: CreateCartItem) {
     const { description, imgUrl, quantity, title, type, id, price } = data
@@ -61,6 +64,9 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   function subCountOnItemCart(itemId: string) {
     dispatch(subCountOnItemCartAction(itemId))
   }
+  // function addCheckoutItemFinished() {
+  //   dispatch(addCheckoutItemFinishedAction())
+  // }
 
   return (
     <CartContext.Provider
@@ -70,6 +76,7 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
         addCountOnItemCart,
         cart,
         subCountOnItemCart,
+        // addCheckoutItemFinished,
       }}
     >
       {children}

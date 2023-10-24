@@ -14,9 +14,18 @@ import { Counter } from '../../components/Counter'
 import { CartContext } from '../../context/CartContext'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { numberToCurrency } from '../../utils/numberToCurrency'
 import { FormProvider, useForm } from 'react-hook-form'
+import axios from 'axios'
+
+const adressApiSchemaResponse = zod.object({
+  state: zod.string().min(1).max(2),
+  street: zod.string().min(1),
+  city: zod.string().min(1),
+  neighborhood: zod.string().min(1),
+})
+type adressApiSchemaResponseType = zod.infer<typeof adressApiSchemaResponse>
 
 const checkoutValidationSchema = zod.object({
   cep: zod
@@ -24,17 +33,24 @@ const checkoutValidationSchema = zod.object({
     .min(8, 'O cep tem que ter 8 dígitos.')
     .max(8, 'O cep tem que ter 8 dígitos.'),
   street: zod.string().min(1, 'Preencha o nome da rua.'),
+  streetNumber: zod.string().min(1, 'Preencha o número do endereço.'),
   neighborhood: zod.string().min(1, 'Preencha o nome do Bairro.'),
-  number: zod.string().min(1, 'Preencha o número do endereço.'),
   complement: zod.string(),
   payment: zod.enum(['debit', 'credit', 'money']),
   city: zod.string().min(1, 'Preencha a cidade'),
-  uf: zod.string().min(2, 'preencha o estado'),
+  state: zod.string().min(2, 'preencha o estado'),
 })
+
 type checkoutFormData = zod.infer<typeof checkoutValidationSchema>
 export function Checkout() {
-  const { cart, addCountOnItemCart, subCountOnItemCart, removeCartItem } =
-    useContext(CartContext)
+  const {
+    cart,
+    addCountOnItemCart,
+    subCountOnItemCart,
+    removeCartItem,
+    // addCheckoutItemFinished,
+  } = useContext(CartContext)
+
   const checkoutForm = useForm<checkoutFormData>({
     mode: 'onBlur',
     resolver: zodResolver(checkoutValidationSchema),
@@ -42,21 +58,55 @@ export function Checkout() {
       cep: '',
       street: '',
       neighborhood: '',
-      number: '',
+      streetNumber: '',
       complement: '',
       city: '',
-      uf: '',
+      state: '',
     },
   })
-  const {
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = checkoutForm
+
+  const { handleSubmit, reset, setValue, watch } = checkoutForm
+
+  const totalCartPrice = cart.reduce((acc, cartItem) => {
+    console.log(cartItem)
+    return acc + cartItem.price * cartItem.quantity
+  }, 0)
+
+  const deliveryTax = 3.5
   function finishCheckoutCart() {
-    console.log(errors)
+    // addCheckoutItemFinished()
     reset()
   }
+
+  const cep = watch('cep')
+
+  useEffect(() => {
+    const regexWithoutDash = /^\d{8}$/
+    const regexWithDash = /^\d{5}-\d{3}$/
+
+    if (regexWithoutDash.test(cep) || regexWithDash.test(cep)) {
+      axios
+        .get(`https://brasilapi.com.br/api/cep/v1/${cep}`, {
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+        .then((res) => {
+          const address: adressApiSchemaResponseType = res.data
+          console.log(res.data)
+          if (address) {
+            for (const key in address) {
+              setValue(
+                key as keyof checkoutFormData,
+                address[key as keyof typeof address],
+              )
+            }
+          }
+        })
+        .catch(() => console.error('CEP está incorreto!'))
+    }
+  }, [setValue, cep])
+
   return (
     <CheckoutContainer onSubmit={handleSubmit(finishCheckoutCart)}>
       <div>
@@ -127,15 +177,15 @@ export function Checkout() {
           <CheckoutInfoContainer>
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>{numberToCurrency(totalCartPrice)}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>{numberToCurrency(deliveryTax)}</span>
             </div>
             <div>
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>{numberToCurrency(totalCartPrice + deliveryTax)}</span>
             </div>
             <button type="submit">CONFIRMAR PEDIDO</button>
           </CheckoutInfoContainer>

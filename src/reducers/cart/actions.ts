@@ -5,6 +5,7 @@ export enum ActionTypes {
   REMOVE_CART_ITEM = 'REMOVE_CART_ITEM',
   ADD_COUNT_ON_ITEM = 'ADD_COUNT_ON_ITEM',
   SUB_COUNT_ON_ITEM = 'SUB_COUNT_ON_ITEM',
+  ADD_CHECKOUT_ITEM = 'ADD_CHECKOUT_ITEM',
 }
 
 interface id {
@@ -16,6 +17,7 @@ export type ActionTypesProps =
   | { type: ActionTypes.REMOVE_CART_ITEM; payload: id }
   | { type: ActionTypes.ADD_COUNT_ON_ITEM; payload: id }
   | { type: ActionTypes.SUB_COUNT_ON_ITEM; payload: id }
+// | { type: ActionTypes.ADD_CHECKOUT_ITEM; payload: id }
 
 export function addCartItemAction(
   newCartItem: CartItemProps,
@@ -52,3 +54,9 @@ export function subCountOnItemCartAction(itemId: string): ActionTypesProps {
     },
   }
 }
+// export function addCheckoutItemFinishedAction(): ActionTypesProps {
+//   return {
+//     type: ActionTypes.ADD_CHECKOUT_ITEM,
+//     payload: { id: '1' },
+//   }
+// }

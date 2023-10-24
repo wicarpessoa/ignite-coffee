@@ -61,6 +61,8 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
             : item,
         ),
       }
+    // case ActionTypes.ADD_CHECKOUT_ITEM:
+    //   return console.log('aaa')
     default:
       return state
   }

@@ -31,10 +31,10 @@ export function AdressForm() {
             type="text"
             id="number"
             placeholder="Número"
-            {...register('number')}
+            {...register('streetNumber')}
           />
-          {errors.number && (
-            <ErrorMessage message={String(errors.number?.message)} />
+          {errors.streetNumber && (
+            <ErrorMessage message={String(errors.streetNumber?.message)} />
           )}
         </label>
         <label htmlFor="complement">
@@ -73,8 +73,10 @@ export function AdressForm() {
           )}
         </label>
         <label htmlFor="uf">
-          <input id="uf" type="text" placeholder="UF" {...register('uf')} />
-          {errors.uf && <ErrorMessage message={String(errors.uf?.message)} />}
+          <input id="uf" type="text" placeholder="UF" {...register('state')} />
+          {errors.state && (
+            <ErrorMessage message={String(errors.state?.message)} />
+          )}
         </label>
       </div>
     </FormContainer>
