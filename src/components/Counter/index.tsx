@@ -15,11 +15,15 @@ export function Counter({
   const buttonSubisDisabled = count <= 1
   return (
     <CounterContainer>
-      <button onClick={onHandleSubCounter} disabled={buttonSubisDisabled}>
+      <button
+        type="button"
+        onClick={onHandleSubCounter}
+        disabled={buttonSubisDisabled}
+      >
         <Minus size={12} weight="bold" />
       </button>
       <span>{count}</span>
-      <button onClick={onHandleAddCounter}>
+      <button type="button" onClick={onHandleAddCounter}>
         <Plus size={12} weight="bold" />
       </button>
     </CounterContainer>

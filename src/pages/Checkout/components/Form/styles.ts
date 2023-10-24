@@ -10,19 +10,6 @@ export const FormContainer = styled.div`
   > label:nth-of-type(1) {
     width: 200px;
   }
-  > div:nth-of-type(2) {
-    display: flex;
-    gap: 12px;
-    label:nth-child(1) {
-      width: 200px;
-    }
-    label:nth-child(2) {
-      flex: 1;
-    }
-    label:nth-child(3) {
-      width: 60px;
-    }
-  }
   > div:nth-of-type(1) {
     display: flex;
     gap: 12px;
@@ -31,6 +18,24 @@ export const FormContainer = styled.div`
     }
     label:nth-child(2) {
       flex: 1;
+    }
+  }
+  > div:nth-of-type(2) {
+    display: flex;
+    gap: 12px;
+    > label:nth-child(1) {
+      width: 200px;
+    }
+    > div {
+      display: flex;
+      gap: 12px;
+      flex: 1;
+      label:nth-child(1) {
+        flex: 1;
+      }
+      label:nth-child(2) {
+        width: 60px;
+      }
     }
   }
 
@@ -44,6 +49,32 @@ export const FormContainer = styled.div`
     width: 100%;
     &:placeholder {
       color: ${(props) => props.theme['base-label']};
+    }
+  }
+  @media (max-width: 768px) {
+    > label {
+      width: 100%;
+    }
+    > label:nth-of-type(1) {
+      width: 50%;
+    }
+    > div {
+      flex-direction: column;
+      > label {
+        width: 100%;
+      }
+    }
+    > div:nth-of-type(1) {
+      label:nth-child(1) {
+        width: 50%;
+      }
+    }
+    > div:nth-of-type(2) {
+      display: flex;
+      gap: 12px;
+      label:nth-child(1) {
+        width: 100%;
+      }
     }
   }
 `

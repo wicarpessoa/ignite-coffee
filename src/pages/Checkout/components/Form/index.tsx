@@ -68,23 +68,30 @@ export function AdressForm() {
             />
           )}
         </label>
-        <label htmlFor="city">
-          <input
-            id="city"
-            type="text"
-            placeholder="Cidade"
-            {...register('city')}
-          />
-          {errors.city && (
-            <FormErrorDescription message={String(errors.city?.message)} />
-          )}
-        </label>
-        <label htmlFor="uf">
-          <input id="uf" type="text" placeholder="UF" {...register('state')} />
-          {errors.state && (
-            <FormErrorDescription message={String(errors.state?.message)} />
-          )}
-        </label>
+        <div>
+          <label htmlFor="city">
+            <input
+              id="city"
+              type="text"
+              placeholder="Cidade"
+              {...register('city')}
+            />
+            {errors.city && (
+              <FormErrorDescription message={String(errors.city?.message)} />
+            )}
+          </label>
+          <label htmlFor="uf">
+            <input
+              id="uf"
+              type="text"
+              placeholder="UF"
+              {...register('state')}
+            />
+            {errors.state && (
+              <FormErrorDescription message={String(errors.state?.message)} />
+            )}
+          </label>
+        </div>
       </div>
     </FormContainer>
   )

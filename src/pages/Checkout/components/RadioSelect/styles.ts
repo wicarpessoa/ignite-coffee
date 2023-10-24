@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const RadioContainer = styled.div`
   .RadioGroupRoot {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
   }
@@ -48,5 +49,16 @@ export const RadioContainer = styled.div`
     position: relative;
     background-color: blue;
     color: blue;
+  }
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    .RadioGroupItem {
+      padding: 0.5rem;
+    }
+  }
+  @media (max-width: 380px) {
+    .RadioGroupItem svg {
+      display: none;
+    }
   }
 `

@@ -28,13 +28,13 @@ export default function RadioSelect() {
                   id="credit"
                 >
                   <CreditCard size={16} color="#8047F8" />
-                  <span>CARTÃO DE CRÉDITO</span>
+                  <span>CRÉDITO</span>
                 </Radio.Item>
               </div>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Radio.Item className="RadioGroupItem" value="debit" id="debit">
                   <Bank size={16} color="#8047F8" />
-                  <span>CARTÃO DE DÉDITO</span>
+                  <span>DÉDITO</span>
                 </Radio.Item>
               </div>
               <div style={{ display: 'flex', alignItems: 'center' }}>

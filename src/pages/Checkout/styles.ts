@@ -4,6 +4,7 @@ export const CheckoutContainer = styled.form`
   display: flex;
   margin: 0 auto;
   width: 100%;
+  padding: 0 2rem;
   gap: 2.5rem;
   > div {
     > h2 {
@@ -12,7 +13,22 @@ export const CheckoutContainer = styled.form`
     }
   }
   > div:nth-of-type(2) {
-    flex: 1;
+    flex-grow: 1;
+  }
+  @media (max-width: 1168px) {
+    padding: 0 1rem 5rem;
+    flex-direction: column;
+    align-items: center;
+    > div:nth-of-type(1) {
+      width: 100%;
+      max-width: 40rem;
+      flex-grow: 0;
+    }
+    > div:nth-of-type(2) {
+      width: 100%;
+      max-width: 40rem;
+      flex-grow: 0;
+    }
   }
 `
 
@@ -20,6 +36,8 @@ export const CheckoutAdressContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2.5rem;
+  max-width: 40rem;
+
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
   margin-top: 1rem;
@@ -36,6 +54,9 @@ export const CheckoutAdressContainer = styled.div`
       color: ${(props) => props.theme['base-text']};
     }
   }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `
 
 export const CheckoutPaymentContainer = styled.div`
@@ -49,6 +70,9 @@ export const CheckoutPaymentContainer = styled.div`
   > div {
     display: flex;
     gap: 8px;
+    > svg {
+      min-height: 22px;
+    }
     h2 {
       font: var(--roboto-md);
       font-weight: 400;
@@ -59,19 +83,27 @@ export const CheckoutPaymentContainer = styled.div`
       font: var(--roboto-sm);
     }
   }
+  max-width: 40rem;
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    width: 100%;
+  }
 `
 
 export const CheckoutCartContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 36rem;
+  max-width: 40rem;
   margin-top: 1rem;
   padding: 1.5rem 2.5rem 2.5rem;
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px 6px 44px;
   > div:nth-of-type(1),
   > div:nth-of-type(2) {
+  }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
 `
 
@@ -124,13 +156,13 @@ export const CheckoutCardInfoContainer = styled.div`
     height: 4rem;
     width: auto;
     object-fit: cover;
-    margin-right: 1.25rem;
+    margin-right: clamp(0.5rem, -0.905rem + 3.448vw, 1.25rem);
   }
   > div {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-right: 22px;
+    margin-right: 8px;
     gap: 8px;
     > div:nth-of-type(1) {
       display: flex;
@@ -165,5 +197,10 @@ export const CheckoutCardInfoContainer = styled.div`
     color: ${(props) => props.theme['base-text']};
 
     white-space: nowrap;
+  }
+  @media (max-width: 380px) {
+    > img {
+      display: none;
+    }
   }
 `
