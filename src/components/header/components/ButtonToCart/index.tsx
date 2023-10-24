@@ -8,7 +8,6 @@ export default function ButtonToCart() {
   const navigate = useNavigate()
   const { cart } = useContext(CartContext)
   const cartLength = cart.length
-  console.log(cartLength)
   return (
     <ButtonToCartContainer
       $cartLength={cartLength}

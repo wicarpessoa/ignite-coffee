@@ -43,7 +43,7 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
       return {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       }
-    case ActionTypes.ADD_COUNT_ON_ITEM:
+    case ActionTypes.INCREASE_CART_ITEM_AMOUNT:
       return {
         ...state,
         cart: state.cart.map((item) =>
@@ -52,7 +52,7 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
             : item,
         ),
       }
-    case ActionTypes.SUB_COUNT_ON_ITEM:
+    case ActionTypes.DECREASE_CART_ITEM_AMOUNT:
       return {
         ...state,
         cart: state.cart.map((item) =>

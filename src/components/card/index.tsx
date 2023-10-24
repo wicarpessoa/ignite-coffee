@@ -4,15 +4,16 @@ import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { Counter } from '../Counter'
 import {
   CardContainer,
-  TextCardContainer,
+  CardContentContainer,
   ImgContainer,
   TagsContainer,
   ControllerContainer,
+  CardTextContainer,
 } from './styles'
 import { ComponentProps, useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
 import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 interface CoffeeProps {
@@ -40,16 +41,18 @@ export function Card({ data }: cardComponentProps) {
 
   return (
     <CardContainer>
-      <TextCardContainer>
+      <CardContentContainer>
         <ImgContainer>
           <img src={Coffe1} alt="" />
         </ImgContainer>
-        <TagsContainer>
-          <Tag />
-        </TagsContainer>
-        <span>{data.title}</span>
-        <p>{data.description}</p>
-      </TextCardContainer>
+        <CardTextContainer>
+          <TagsContainer>
+            <Tag />
+          </TagsContainer>
+          <span>{data.title}</span>
+          <p>{data.description}</p>
+        </CardTextContainer>
+      </CardContentContainer>
       <ControllerContainer>
         <span>{formattedPrice}</span>
         <div>

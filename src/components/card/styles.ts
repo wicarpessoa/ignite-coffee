@@ -9,13 +9,31 @@ export const CardContainer = styled.div`
   align-items: center;
   padding: 0 1.25rem 1.25rem;
   border-radius: 6px 36px 6px 36px;
+  @media (max-width: 400px) {
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    padding: 1.25rem;
+    gap: 0.5rem;
+  }
 `
 
-export const TextCardContainer = styled.div`
+export const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: -20px;
+  @media (max-width: 400px) {
+    flex-direction: row;
+    margin-top: 0;
+    gap: 0.5rem;
+  }
+`
+export const CardTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   > p {
     font: var(--roboto-sm);
     color: ${(props) => props.theme['base-label']};
@@ -26,6 +44,16 @@ export const TextCardContainer = styled.div`
     color: ${(props) => props.theme['base-subtitle']};
     margin-bottom: 0.5rem;
   }
+  @media (max-width: 400px) {
+    margin-top: 0;
+    flex-direction: column-reverse;
+    > p {
+      display: none;
+    }
+    > span {
+      text-align: center;
+    }
+  }
 `
 
 export const ImgContainer = styled.div`
@@ -33,8 +61,11 @@ export const ImgContainer = styled.div`
   height: fit-content;
   margin-bottom: 0.75rem;
   > img {
-    height: 120px;
+    height: clamp(6rem, 0.286rem + 8.571vw, 8rem);
     object-fit: cover;
+  }
+  @media (max-width: 400px) {
+    display: none;
   }
 `
 export const TagsContainer = styled.div`
@@ -75,5 +106,9 @@ export const ControllerContainer = styled.div`
       content: 'R$ ';
       font: var(--roboto-sm);
     }
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;
+    margin-top: 0;
   }
 `

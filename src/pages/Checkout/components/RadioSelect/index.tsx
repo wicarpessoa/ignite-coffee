@@ -2,7 +2,7 @@ import { CreditCard, Bank, Money } from '@phosphor-icons/react'
 import { RadioContainer } from './styles'
 import * as Radio from '@radix-ui/react-radio-group'
 import { useFormContext, Controller } from 'react-hook-form'
-import { ErrorMessage } from '../../../../components/errorMessage'
+import { FormErrorDescription } from '../../../../components/FormErrorDescription'
 export default function RadioSelect() {
   const {
     control,
@@ -44,7 +44,9 @@ export default function RadioSelect() {
                 </Radio.Item>
               </div>
               {errors.payment && (
-                <ErrorMessage message={String(errors.payment?.message)} />
+                <FormErrorDescription
+                  message={String(errors.payment?.message)}
+                />
               )}
             </Radio.Root>
           )

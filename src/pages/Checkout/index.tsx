@@ -18,6 +18,7 @@ import { useContext, useEffect } from 'react'
 import { numberToCurrency } from '../../utils/numberToCurrency'
 import { FormProvider, useForm } from 'react-hook-form'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const adressApiSchemaResponse = zod.object({
   state: zod.string().min(1).max(2),
@@ -37,16 +38,16 @@ const checkoutValidationSchema = zod.object({
   neighborhood: zod.string().min(1, 'Preencha o nome do Bairro.'),
   complement: zod.string(),
   payment: zod.enum(['debit', 'credit', 'money']),
-  city: zod.string().min(1, 'Preencha a cidade'),
-  state: zod.string().min(2, 'preencha o estado'),
+  city: zod.string().min(1, 'Preencha a cidade.'),
+  state: zod.string().min(2, 'Preencha o estado.'),
 })
 
 type checkoutFormData = zod.infer<typeof checkoutValidationSchema>
 export function Checkout() {
   const {
     cart,
-    addCountOnItemCart,
-    subCountOnItemCart,
+    increaseCartItemAmount,
+    decreaseCartItemAmount,
     removeCartItem,
     // addCheckoutItemFinished,
   } = useContext(CartContext)
@@ -65,10 +66,9 @@ export function Checkout() {
     },
   })
 
-  const { handleSubmit, reset, setValue, watch } = checkoutForm
+  const { handleSubmit, reset, setValue, watch, setError } = checkoutForm
 
   const totalCartPrice = cart.reduce((acc, cartItem) => {
-    console.log(cartItem)
     return acc + cartItem.price * cartItem.quantity
   }, 0)
 
@@ -79,7 +79,6 @@ export function Checkout() {
   }
 
   const cep = watch('cep')
-
   useEffect(() => {
     const regexWithoutDash = /^\d{8}$/
     const regexWithDash = /^\d{5}-\d{3}$/
@@ -93,7 +92,6 @@ export function Checkout() {
         })
         .then((res) => {
           const address: adressApiSchemaResponseType = res.data
-          console.log(res.data)
           if (address) {
             for (const key in address) {
               setValue(
@@ -103,9 +101,11 @@ export function Checkout() {
             }
           }
         })
-        .catch(() => console.error('CEP está incorreto!'))
+        .catch(() =>
+          setError('cep', { type: 'custom', message: 'CEP inválido!' }),
+        )
     }
-  }, [setValue, cep])
+  }, [setValue, cep, setError])
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(finishCheckoutCart)}>
@@ -154,15 +154,18 @@ export function Checkout() {
                       <Counter
                         count={cartItem.quantity}
                         onHandleAddCounter={() => {
-                          addCountOnItemCart(cartItem.id)
+                          increaseCartItemAmount(cartItem.id)
                         }}
                         onHandleSubCounter={() => {
-                          subCountOnItemCart(cartItem.id)
+                          decreaseCartItemAmount(cartItem.id)
                         }}
                       />
                       <button
                         onClick={() => {
                           removeCartItem(cartItem.id)
+                          toast.success(
+                            `Item ${cartItem.title} removido com sucesso!`,
+                          )
                         }}
                       >
                         <Trash color="#8047F8" size={16} /> REMOVER

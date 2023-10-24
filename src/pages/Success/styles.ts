@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const SuccessContainer = styled.main`
   display: flex;
   flex-direction: column;
+  padding: 0 2rem;
   > div {
     display: flex;
     width: 100%;
@@ -18,6 +19,14 @@ export const SuccessContainer = styled.main`
   > span {
     font: var(--roboto-l);
     font-weight: 400;
+  }
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    flex-direction: column;
+    > div {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 `
 
@@ -34,7 +43,7 @@ export const SuccessInfoContainer = styled.div`
     position: absolute;
     z-index: -1;
     content: '';
-    inset: -1px;
+    inset: -2px;
     background: linear-gradient(
       90deg,
       rgba(219, 172, 44, 1) 0%,
@@ -43,6 +52,9 @@ export const SuccessInfoContainer = styled.div`
   }
   > div {
     display: flex;
+  }
+  @media (max-width: 1168px) {
+    padding: 1rem;
   }
 `
 
@@ -64,8 +76,8 @@ export const OrderInfo = styled.div<OrderInfoProps>`
       }
     }
     > div:nth-of-type(1) {
-      width: 32px;
-      height: 32px;
+      width: 2rem;
+      height: 2rem;
       border-radius: 9999px;
       align-items: center;
       justify-content: center;
@@ -77,4 +89,7 @@ export const OrderInfo = styled.div<OrderInfoProps>`
 
 export const SuccessImgContainer = styled.div`
   display: flex;
+  > img {
+    height: clamp(12rem, 1.385rem + 18.462vw, 18rem);
+  }
 `

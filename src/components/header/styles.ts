@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem;
   align-items: center;
   > button:nth-of-type(1) {
     background-color: transparent;
@@ -24,6 +24,18 @@ export const HeaderContainer = styled.header`
 
       > span {
         font: var(--roboto-sm);
+      }
+    }
+  }
+  @media (max-width: 1168px) {
+    padding: 2rem 1rem;
+  }
+  @media (max-width: 400px) {
+    > div {
+      > button:nth-of-type(1) {
+        > span {
+          display: none;
+        }
       }
     }
   }

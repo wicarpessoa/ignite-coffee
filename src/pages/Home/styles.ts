@@ -4,7 +4,10 @@ export const HomeContainer = styled.div`
   max-width: 1184px;
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 10rem;
+  padding: 0 2rem 10rem;
+  @media (max-width: 1168px) {
+    padding: 0 1rem 10rem;
+  }
 `
 export const HeroContainer = styled.section`
   display: flex;
@@ -28,6 +31,7 @@ export const HeroContent = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
   > div {
     display: flex;
     flex-direction: column;
@@ -47,7 +51,6 @@ export const HeroContent = styled.div`
     > ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      flex-wrap: wrap;
       margin-top: auto;
       gap: 1.25rem 2rem;
       > li:first-child div {
@@ -80,11 +83,32 @@ export const HeroContent = styled.div`
       }
     }
   }
+  > div:nth-of-type(2) {
+    img {
+      height: clamp(14rem, 6.571rem + 17.143vw, 22rem);
+    }
+  }
+  @media (max-width: 1168px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    > div {
+      > h1 {
+        text-align: center;
+      }
+      > p {
+        text-align: center;
+      }
+      > ul {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
 `
 export const CoffeesContainer = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 2rem;
   gap: 3.5rem;
   > h1 {
     font: var(--baloo2-l);

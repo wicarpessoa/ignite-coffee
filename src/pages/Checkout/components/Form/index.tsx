@@ -1,18 +1,19 @@
 import { useFormContext } from 'react-hook-form'
 import { FormContainer } from './styles'
-import { ErrorMessage } from '../../../../components/errorMessage'
+import { FormErrorDescription } from '../../../../components/FormErrorDescription'
 
 export function AdressForm() {
   const {
     register,
     formState: { errors },
   } = useFormContext()
-  console.log(errors)
   return (
     <FormContainer>
       <label htmlFor="cep">
         <input type="text" id="cep" placeholder="CEP" {...register('cep')} />
-        {errors.cep && <ErrorMessage message={String(errors.cep?.message)} />}
+        {errors.cep && (
+          <FormErrorDescription message={String(errors.cep?.message)} />
+        )}
       </label>
       <label htmlFor="street">
         <input
@@ -22,7 +23,7 @@ export function AdressForm() {
           {...register('street')}
         />
         {errors.street && (
-          <ErrorMessage message={String(errors.street?.message)} />
+          <FormErrorDescription message={String(errors.street?.message)} />
         )}
       </label>
       <div>
@@ -34,7 +35,9 @@ export function AdressForm() {
             {...register('streetNumber')}
           />
           {errors.streetNumber && (
-            <ErrorMessage message={String(errors.streetNumber?.message)} />
+            <FormErrorDescription
+              message={String(errors.streetNumber?.message)}
+            />
           )}
         </label>
         <label htmlFor="complement">
@@ -45,7 +48,9 @@ export function AdressForm() {
             {...register('complement')}
           />
           {errors.complement && (
-            <ErrorMessage message={String(errors.complement?.message)} />
+            <FormErrorDescription
+              message={String(errors.complement?.message)}
+            />
           )}
         </label>
       </div>
@@ -58,7 +63,9 @@ export function AdressForm() {
             {...register('neighborhood')}
           />
           {errors.neighborhood && (
-            <ErrorMessage message={String(errors.neighborhood?.message)} />
+            <FormErrorDescription
+              message={String(errors.neighborhood?.message)}
+            />
           )}
         </label>
         <label htmlFor="city">
@@ -69,13 +76,13 @@ export function AdressForm() {
             {...register('city')}
           />
           {errors.city && (
-            <ErrorMessage message={String(errors.city?.message)} />
+            <FormErrorDescription message={String(errors.city?.message)} />
           )}
         </label>
         <label htmlFor="uf">
           <input id="uf" type="text" placeholder="UF" {...register('state')} />
           {errors.state && (
-            <ErrorMessage message={String(errors.state?.message)} />
+            <FormErrorDescription message={String(errors.state?.message)} />
           )}
         </label>
       </div>

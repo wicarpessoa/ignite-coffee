@@ -3,11 +3,10 @@ import { CartItemProps, cartReducer } from '../reducers/cart/reducer'
 import {
   addCartItemAction,
   // addCheckoutItemFinishedAction,
-  addCountOnItemCartAction,
+  increaseCartItemAmountAction,
   removeCartItemAction,
-  subCountOnItemCartAction,
+  decreaseCartItemAmountAction,
 } from '../reducers/cart/actions'
-import { toast } from 'react-toastify'
 
 interface CreateCartItem {
   id: string
@@ -23,8 +22,8 @@ interface CartContextType {
   cart: CartItemProps[]
   addNewCartItem: (data: CreateCartItem) => void
   removeCartItem: (id: string) => void
-  addCountOnItemCart: (id: string) => void
-  subCountOnItemCart: (id: string) => void
+  increaseCartItemAmount: (id: string) => void
+  decreaseCartItemAmount: (id: string) => void
   // addCheckoutItemFinished: () => void
 }
 
@@ -38,7 +37,6 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   const [cartState, dispatch] = useReducer(cartReducer, {
     cart: [],
   })
-  console.log(cartState)
   const { cart } = cartState
   function addNewCartItem(data: CreateCartItem) {
     const { description, imgUrl, quantity, title, type, id, price } = data
@@ -51,11 +49,7 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
       imgUrl,
       type,
     }
-    toast.success(`Item ${title} adicionado com sucesso!`, {
-      toastId: id,
-      autoClose: 1500000,
-      containerId: id,
-    })
+
     dispatch(addCartItemAction(newCartItem))
   }
 
@@ -63,11 +57,11 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
     dispatch(removeCartItemAction(itemId))
   }
 
-  function addCountOnItemCart(itemId: string) {
-    dispatch(addCountOnItemCartAction(itemId))
+  function increaseCartItemAmount(itemId: string) {
+    dispatch(increaseCartItemAmountAction(itemId))
   }
-  function subCountOnItemCart(itemId: string) {
-    dispatch(subCountOnItemCartAction(itemId))
+  function decreaseCartItemAmount(itemId: string) {
+    dispatch(decreaseCartItemAmountAction(itemId))
   }
   // function addCheckoutItemFinished() {
   //   dispatch(addCheckoutItemFinishedAction())
@@ -78,9 +72,9 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
       value={{
         addNewCartItem,
         removeCartItem,
-        addCountOnItemCart,
+        increaseCartItemAmount,
+        decreaseCartItemAmount,
         cart,
-        subCountOnItemCart,
         // addCheckoutItemFinished,
       }}
     >
