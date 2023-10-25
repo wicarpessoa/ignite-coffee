@@ -7,7 +7,6 @@ import {
   CheckoutInfoContainer,
   CheckoutPaymentContainer,
 } from './styles'
-import Image1 from '../../assets/Image-1.png'
 import RadioSelect from './components/RadioSelect'
 import { AdressForm } from './components/Form'
 import { Counter } from '../../components/Counter'
@@ -147,7 +146,7 @@ export function Checkout() {
               )
               return (
                 <CheckoutCardInfoContainer key={cartItem.id}>
-                  <img src={Image1} alt="" />
+                  <img src={cartItem.imgUrl} alt="" />
                   <div>
                     <span>{cartItem.title}</span>
                     <div>

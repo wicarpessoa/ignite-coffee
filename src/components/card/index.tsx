@@ -1,4 +1,3 @@
-import Coffe1 from '../../assets/Image-1.png'
 import { Tag } from '../tag'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { Counter } from '../Counter'
@@ -43,7 +42,7 @@ export function Card({ data }: cardComponentProps) {
     <CardContainer>
       <CardContentContainer>
         <ImgContainer>
-          <img src={Coffe1} alt="" />
+          <img src={data.imgUrl} alt="" />
         </ImgContainer>
         <CardTextContainer>
           <TagsContainer>

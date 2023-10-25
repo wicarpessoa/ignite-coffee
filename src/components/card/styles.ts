@@ -102,6 +102,7 @@ export const ControllerContainer = styled.div`
   > span {
     font: var(--baloo2-md);
     color: ${(props) => props.theme['base-text']};
+    white-space: nowrap;
     &::before {
       content: 'R$ ';
       font: var(--roboto-sm);
