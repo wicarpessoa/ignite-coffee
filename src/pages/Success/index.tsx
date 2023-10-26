@@ -78,7 +78,10 @@ export function Success() {
           </OrderInfo>
         </SuccessInfoContainer>
         <SuccessImgContainer>
-          <img src="./src/assets/successImg.svg" alt="" />
+          <img
+            src="https://raw.githubusercontent.com/wicarpessoa/ignite-coffee/04499731127a544e0b67e6b211270515b342c926/src/assets/successImg.svg"
+            alt=""
+          />
         </SuccessImgContainer>
       </div>
     </SuccessContainer>

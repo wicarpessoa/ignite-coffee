@@ -189,7 +189,10 @@ export function Checkout() {
       {cart.length === 0 ? (
         <CheckoutEmptyCartContainer>
           <h2>Você não tem Itens adicionados ao carrinho!</h2>
-          <img src="./src/assets/EmptyCartLogo.svg" alt="" />
+          <img
+            src="https://raw.githubusercontent.com/wicarpessoa/ignite-coffee/04499731127a544e0b67e6b211270515b342c926/src/assets/EmptyCartLogo.svg"
+            alt=""
+          />
           <button onClick={() => navigate('/')}>
             <ArrowLeft />
             Voltar

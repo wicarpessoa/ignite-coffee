@@ -20,7 +20,7 @@ export const HeroContainer = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url(./src/assets/Background.svg);
+    background-image: url('https://raw.githubusercontent.com/wicarpessoa/ignite-coffee/04499731127a544e0b67e6b211270515b342c926/src/assets/Background.svg');
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
