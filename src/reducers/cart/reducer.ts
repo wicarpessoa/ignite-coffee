@@ -2,6 +2,7 @@ import { ActionTypes, ActionTypesProps } from './actions'
 
 export interface CartItemProps {
   id: string
+  priceId: string
   title: string
   description: string
   price: number

@@ -10,10 +10,11 @@ import {
 
 interface CreateCartItem {
   id: string
+  priceId: string
+  imgUrl: string
   title: string
   description: string
   price: number
-  imgUrl: string
   type: string[]
   quantity: number
 }
@@ -39,14 +40,16 @@ export function CartContextProvider({ children }: CartContextProviderChildren) {
   })
   const { cart } = cartState
   function addNewCartItem(data: CreateCartItem) {
-    const { description, imgUrl, quantity, title, type, id, price } = data
+    const { description, imgUrl, quantity, title, type, id, price, priceId } =
+      data
     const newCartItem: CartItemProps = {
       id,
-      description,
+      priceId,
+      imgUrl,
       title,
+      description,
       price,
       quantity,
-      imgUrl,
       type,
     }
 

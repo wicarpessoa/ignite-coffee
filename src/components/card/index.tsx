@@ -17,9 +17,10 @@ import 'react-toastify/dist/ReactToastify.css'
 
 interface CoffeeProps {
   id: string
+  priceId: string
+  imgUrl: string
   title: string
   description: string
-  imgUrl: string
   type: string[]
   price: number
 }
@@ -64,6 +65,7 @@ export function Card({ data }: cardComponentProps) {
             onClick={() => {
               addNewCartItem({
                 id: data.id,
+                priceId: data.priceId,
                 title: data.title,
                 description: data.description,
                 price: data.price,

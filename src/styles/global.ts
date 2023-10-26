@@ -10,10 +10,29 @@ ${variables};
   box-sizing: border-box;
 }
 
+html::-webkit-scrollbar {
+    
+    background-color:  ${(props) => props.theme['base-background']};
+    width: 8px;
+    box-shadow: inset 0 0 5px ${(props) => props.theme['base-button']};
+  border-radius: 10px;
+  };
+  
+
+html::-webkit-scrollbar-track {
+    background-color: transparent;
+  };
+
+html::-webkit-scrollbar-thumb {
+    background:   ${(props) => props.theme.yellow};
+    border-radius: 9999px;
+  };
 body {
   background: ${(props) => props.theme['base-background']};
   min-height: 100dvh;
   --webkit-font-smoothing: antialiased;
+
+  
 }
 
 body, input, textarea, button {

@@ -9,4 +9,11 @@ export const LayoutContainer = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  /* ::-webkit-scrollbar-button:;
+  ::-webkit-scrollbar-thumb:;
+  ::-webkit-scrollbar-track:;
+  ::-webkit-scrollbar-track-piece:;
+  ::-webkit-scrollbar-corner:;
+  ::-webkit-resizer:; */
 `

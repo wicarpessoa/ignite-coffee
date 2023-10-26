@@ -55,7 +55,7 @@ export function Home() {
         <h1>Nossos cafés</h1>
         <div>
           {coffesList.map((coffeeItem) => {
-            return <Card key={coffeeItem.title} data={coffeeItem} />
+            return <Card key={coffeeItem.id} data={coffeeItem} />
           })}
         </div>
       </CoffeesContainer>

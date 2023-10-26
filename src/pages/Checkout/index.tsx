@@ -7,13 +7,15 @@ import {
   CheckoutInfoContainer,
   CheckoutPaymentContainer,
 } from './styles'
+import { stripe } from '../../lib/stripe'
+
 import RadioSelect from './components/RadioSelect'
 import { AdressForm } from './components/Form'
 import { Counter } from '../../components/Counter'
 import { CartContext } from '../../context/CartContext'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { numberToCurrency } from '../../utils/numberToCurrency'
 import { FormProvider, useForm } from 'react-hook-form'
 import axios from 'axios'
@@ -43,6 +45,11 @@ const checkoutValidationSchema = zod.object({
 
 type checkoutFormData = zod.infer<typeof checkoutValidationSchema>
 export function Checkout() {
+  const deliveryTax = 3.5
+
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
+    useState(false)
+
   const {
     cart,
     increaseCartItemAmount,
@@ -71,10 +78,36 @@ export function Checkout() {
     return acc + cartItem.price * cartItem.quantity
   }, 0)
 
-  const deliveryTax = 3.5
   function finishCheckoutCart() {
     // addCheckoutItemFinished()
     reset()
+  }
+
+  async function handleBuyProduct() {
+    const cartItemsToStripe = cart.map((cartItem) => {
+      return {
+        price: cartItem.priceId,
+        quantity: cartItem.quantity,
+      }
+    })
+    console.log(cartItemsToStripe)
+    setIsCreatingCheckoutSession(true)
+    try {
+      const response = await stripe.checkout.sessions.create({
+        success_url: 'http://localhost:5173/success',
+        mode: 'payment',
+        line_items: cartItemsToStripe,
+      })
+      setIsCreatingCheckoutSession(false)
+
+      if (response.url) {
+        window.location.href = response.url
+      }
+      return console.log(response.url)
+    } catch (e) {
+      setIsCreatingCheckoutSession(false)
+      toast.error('Não foi possível ir para o checkout!')
+    }
   }
 
   const cep = watch('cep')
@@ -189,7 +222,13 @@ export function Checkout() {
               <span>Total</span>
               <span>{numberToCurrency(totalCartPrice + deliveryTax)}</span>
             </div>
-            <button type="submit">CONFIRMAR PEDIDO</button>
+            <button
+              type="button"
+              onClick={handleBuyProduct}
+              disabled={isCreatingCheckoutSession}
+            >
+              CONFIRMAR PEDIDO
+            </button>
           </CheckoutInfoContainer>
         </CheckoutCartContainer>
       </div>
