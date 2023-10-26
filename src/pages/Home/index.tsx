@@ -6,7 +6,7 @@ import {
   HomeContainer,
 } from './styles'
 import HeroImg from '../../assets/Imagem.svg'
-import { Card } from '../../components/Card/index'
+import { Card } from '../../components/Card'
 import { coffesList } from '../../utils/CoffeesDummyData'
 export function Home() {
   return (
