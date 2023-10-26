@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { CartContext } from '../../context/CartContext'
 import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
 import { Counter } from '../Counter'
-import { Tag } from '../tag'
+import { Tag } from '../Tag'
 import {
   CardContainer,
   CardContentContainer,
