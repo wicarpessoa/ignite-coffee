@@ -1,8 +1,8 @@
 import { ShoppingCart } from '@phosphor-icons/react'
 import { useContext } from 'react'
-import { ButtonToCartContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../../../../context/CartContext'
+import { ButtonToCartContainer } from './styles'
 
 export default function ButtonToCart() {
   const navigate = useNavigate()

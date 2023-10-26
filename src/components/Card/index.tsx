@@ -1,19 +1,19 @@
-import { Tag } from '../tag'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
+import { ComponentProps, useContext, useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { CartContext } from '../../context/CartContext'
+import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
 import { Counter } from '../Counter'
+import { Tag } from '../tag'
 import {
   CardContainer,
   CardContentContainer,
+  CardTextContainer,
+  ControllerContainer,
   ImgContainer,
   TagsContainer,
-  ControllerContainer,
-  CardTextContainer,
 } from './styles'
-import { ComponentProps, useContext, useState } from 'react'
-import { CartContext } from '../../context/CartContext'
-import { numberWithTwoDecimals } from '../../utils/numberToCurrency'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 interface CoffeeProps {
   id: string
