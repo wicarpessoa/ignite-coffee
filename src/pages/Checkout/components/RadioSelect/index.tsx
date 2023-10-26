@@ -21,6 +21,7 @@ export default function RadioSelect() {
               onValueChange={field.onChange}
               value={field.value}
             >
+              <p>Pagar na entrega</p>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Radio.Item
                   className="RadioGroupItem"
@@ -41,6 +42,17 @@ export default function RadioSelect() {
                 <Radio.Item className="RadioGroupItem" value="money" id="money">
                   <Money size={16} color="#8047F8" />
                   <span>DINHEIRO</span>
+                </Radio.Item>
+              </div>
+              <p>Pagar Online</p>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Radio.Item
+                  className="RadioGroupItem"
+                  value="stripe"
+                  id="stripe"
+                >
+                  <Money size={16} color="#8047F8" />
+                  <span>STRIPE</span>
                 </Radio.Item>
               </div>
               {errors.payment && (

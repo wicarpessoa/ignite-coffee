@@ -75,7 +75,7 @@ export function Card({ data }: cardComponentProps) {
               })
               toast.success(`Item ${data.title} adicionado com sucesso!`, {
                 toastId: data.id,
-                autoClose: 1500000,
+                autoClose: 2500,
               })
               setCount(1)
             }}

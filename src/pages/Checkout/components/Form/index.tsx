@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-import { FormContainer } from './styles'
+import { FormContainer, Input } from './styles'
 import { FormErrorDescription } from '../../../../components/FormErrorDescription'
 
 export function AdressForm() {
@@ -10,16 +10,23 @@ export function AdressForm() {
   return (
     <FormContainer>
       <label htmlFor="cep">
-        <input type="text" id="cep" placeholder="CEP" {...register('cep')} />
+        <Input
+          type="text"
+          id="cep"
+          placeholder="CEP"
+          $error={!!errors.cep}
+          {...register('cep')}
+        />
         {errors.cep && (
           <FormErrorDescription message={String(errors.cep?.message)} />
         )}
       </label>
       <label htmlFor="street">
-        <input
+        <Input
           id="street"
           type="text"
           placeholder="Rua"
+          $error={!!errors.street}
           {...register('street')}
         />
         {errors.street && (
@@ -28,10 +35,11 @@ export function AdressForm() {
       </label>
       <div>
         <label htmlFor="number">
-          <input
+          <Input
             type="text"
-            id="number"
+            id="streetNumber"
             placeholder="Número"
+            $error={!!errors.streetNumber}
             {...register('streetNumber')}
           />
           {errors.streetNumber && (
@@ -41,10 +49,11 @@ export function AdressForm() {
           )}
         </label>
         <label htmlFor="complement">
-          <input
+          <Input
             id="complement"
             type="text"
             placeholder="Complemento"
+            $error={!!errors.complement}
             {...register('complement')}
           />
           {errors.complement && (
@@ -56,10 +65,11 @@ export function AdressForm() {
       </div>
       <div>
         <label htmlFor="neighborhood">
-          <input
+          <Input
             id="neighborhood"
             type="text"
             placeholder="Bairro"
+            $error={!!errors.neighborhood}
             {...register('neighborhood')}
           />
           {errors.neighborhood && (
@@ -70,10 +80,11 @@ export function AdressForm() {
         </label>
         <div>
           <label htmlFor="city">
-            <input
+            <Input
               id="city"
               type="text"
               placeholder="Cidade"
+              $error={!!errors.city}
               {...register('city')}
             />
             {errors.city && (
@@ -81,10 +92,11 @@ export function AdressForm() {
             )}
           </label>
           <label htmlFor="uf">
-            <input
+            <Input
               id="uf"
               type="text"
               placeholder="UF"
+              $error={!!errors.state}
               {...register('state')}
             />
             {errors.state && (

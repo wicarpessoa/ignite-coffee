@@ -1,3 +1,4 @@
+import { ComponentProps } from 'react'
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
@@ -40,16 +41,6 @@ export const FormContainer = styled.div`
   }
 
   input {
-    background-color: ${(props) => props.theme['base-input']};
-    font: var(--roboto-sm);
-    color: ${(props) => props.theme['base-text']};
-    border: none;
-    padding: 12px;
-    border-radius: 4px;
-    width: 100%;
-    &:placeholder {
-      color: ${(props) => props.theme['base-label']};
-    }
   }
   @media (max-width: 768px) {
     > label {
@@ -76,5 +67,24 @@ export const FormContainer = styled.div`
         width: 100%;
       }
     }
+  }
+`
+interface InputProps extends ComponentProps<'input'> {
+  $error: boolean
+}
+
+export const Input = styled.input<InputProps>`
+  background-color: ${(props) => props.theme['base-input']};
+  font: var(--roboto-sm);
+  color: ${(props) => props.theme['base-text']};
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 0 0 2px
+    ${({ theme, $error }) => ($error ? theme.red : theme['base-card'])};
+
+  &:placeholder {
+    color: ${(props) => props.theme['base-label']};
   }
 `

@@ -5,8 +5,16 @@ import {
   SuccessInfoContainer,
   SuccessImgContainer,
 } from './styles'
-
+import { CartContext } from '../../context/CartContext'
+import { useContext } from 'react'
 export function Success() {
+  const { order } = useContext(CartContext)
+  const paymentMethodDescription = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de dédito',
+    money: 'Dinheiro',
+    stripe: 'Pagamento efetuado online',
+  }
   return (
     <SuccessContainer>
       <h2>Uhu! Pedido confirmado</h2>
@@ -20,9 +28,15 @@ export function Success() {
               </div>
               <div>
                 <span>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {order.adress.street}, {order.adress.streetNumber}
+                  </strong>
                 </span>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {order.adress.neighborhood} {order.adress.city},{' '}
+                  {order.adress.state}
+                </span>
               </div>
             </div>
           </OrderInfo>
@@ -49,9 +63,15 @@ export function Success() {
               </div>
 
               <div>
-                <span>Pagamento na entrega</span>
                 <span>
-                  <strong>Cartão de Crédito</strong>
+                  {order.payment.paymentType === 'stripe'
+                    ? 'Pagemento online'
+                    : 'Pagamento na entrega'}
+                </span>
+                <span>
+                  <strong>
+                    {paymentMethodDescription[order.payment.paymentType]}
+                  </strong>
                 </span>
               </div>
             </div>

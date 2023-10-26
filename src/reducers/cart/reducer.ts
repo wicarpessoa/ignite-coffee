@@ -11,8 +11,31 @@ export interface CartItemProps {
   quantity: number
 }
 
+interface AdressProps {
+  cep: string
+  street: string
+  streetNumber: string
+  complement?: string
+  city: string
+  state: string
+  neighborhood: string
+}
+
+interface PaymentProps {
+  amount: number
+  paymentType: 'stripe' | 'credit' | 'debit' | 'money'
+}
+
+export interface OrderProps {
+  id: string
+  status: string
+  adress: AdressProps
+  payment: PaymentProps
+}
+
 interface CartStateProps {
   cart: CartItemProps[]
+  order: OrderProps
 }
 
 export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
@@ -32,16 +55,19 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
         }
 
         return {
+          ...state,
           cart: updatedCart,
         }
       } else {
         return {
+          ...state,
           cart: [...state.cart, action.payload],
         }
       }
     }
     case ActionTypes.REMOVE_CART_ITEM:
       return {
+        ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       }
     case ActionTypes.INCREASE_CART_ITEM_AMOUNT:
@@ -62,8 +88,17 @@ export function cartReducer(state: CartStateProps, action: ActionTypesProps) {
             : item,
         ),
       }
-    // case ActionTypes.ADD_CHECKOUT_ITEM:
-    //   return console.log('aaa')
+    case ActionTypes.ADD_CHECKOUT_ITEM:
+      console.log(action.payload)
+      return {
+        ...state,
+        order: action.payload,
+      }
+    case ActionTypes.CLEAN_CART:
+      return {
+        ...state,
+        cart: [],
+      }
     default:
       return state
   }

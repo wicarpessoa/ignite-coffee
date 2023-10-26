@@ -6,6 +6,12 @@ export const RadioContainer = styled.div`
     width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
+    > span {
+      grid-column: 1/4;
+    }
+    > p {
+      grid-column: 1/4;
+    }
   }
 
   .RadioGroupItem {

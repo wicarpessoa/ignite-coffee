@@ -1,5 +1,39 @@
 import styled from 'styled-components'
 
+export const CheckoutEmptyCartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
+  align-items: center;
+  gap: 2rem;
+  > h2 {
+    font: var(--baloo2-l);
+    color: ${(props) => props.theme['base-title']};
+    text-align: center;
+  }
+  > img {
+    max-width: 30rem;
+    width: 100%;
+    object-fit: cover;
+  }
+  > button {
+    display: flex;
+    gap: 1rem;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    font: var(--roboto-l);
+    cursor: pointer;
+    color: ${(props) => props.theme.yellow};
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: ${(props) => props.theme['yellow-dark']};
+    }
+  }
+`
+
 export const CheckoutContainer = styled.form`
   display: flex;
   margin: 0 auto;
