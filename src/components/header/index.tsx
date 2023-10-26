@@ -1,8 +1,8 @@
-import Logo from '../../assets/Logo.svg'
 import { MapPin } from '@phosphor-icons/react'
-import { HeaderContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
+import Logo from '../../assets/Logo.svg'
 import ButtonToCart from './components/ButtonToCart'
+import { HeaderContainer } from './styles'
 
 export function Header() {
   const navigate = useNavigate()
