@@ -3,6 +3,7 @@ import {
   MapPinLine,
   Trash,
   ArrowLeft,
+  Spinner,
 } from '@phosphor-icons/react'
 import {
   CheckoutAdressContainer,
@@ -34,7 +35,6 @@ const adressApiSchemaResponse = zod.object({
   neighborhood: zod.string().min(1),
 })
 type adressApiSchemaResponseType = zod.infer<typeof adressApiSchemaResponse>
-
 const checkoutValidationSchema = zod.object({
   cep: zod
     .string()
@@ -87,7 +87,6 @@ export function Checkout() {
     checkoutForm
 
   const cep = watch('cep')
-  const paymentType = watch('payment')
 
   const totalCartPrice = cart.reduce((acc, cartItem) => {
     return acc + cartItem.price * cartItem.quantity
@@ -100,24 +99,25 @@ export function Checkout() {
         quantity: cartItem.quantity,
       }
     })
-    setIsCreatingCheckoutSession(true)
     try {
       const response = await stripe.checkout.sessions.create({
         success_url: 'http://localhost:5173/success',
+        cancel_url: 'http://localhost:5173/',
         mode: 'payment',
         line_items: cartItemsToStripe,
       })
-      setIsCreatingCheckoutSession(false)
 
       if (response.url) {
         window.location.href = response.url
       }
     } catch (e) {
-      setIsCreatingCheckoutSession(false)
       toast.error('Não foi possível ir para o checkout!')
     }
   }
+
   function handleLocalCheckout() {
+    setIsCreatingCheckoutSession(true)
+
     addCheckoutItemFinished({
       id: uuid(),
       adress: {
@@ -135,24 +135,23 @@ export function Checkout() {
       },
       status: 'Confirmado',
     })
+    setIsCreatingCheckoutSession(false)
   }
 
   async function finishCheckoutCart() {
+    handleLocalCheckout()
     try {
-      if (paymentType === 'stripe') {
+      if (order.payment.paymentType === 'stripe') {
         await handleStripeCheckout()
       }
-      handleLocalCheckout()
-
-      if (paymentType !== 'stripe') {
+      if (order.payment.paymentType !== 'stripe') {
+        cleanCart()
         navigate('/success')
       }
-      cleanCart()
       toast.success('Pedido confirmado!')
     } catch (e) {
       toast.error('Não foi possível confirmar o pedido!')
     }
-
     reset()
   }
 
@@ -282,7 +281,7 @@ export function Checkout() {
                   <span>{numberToCurrency(totalCartPrice + DELIVERY_TAX)}</span>
                 </div>
                 <button type="submit" disabled={isCreatingCheckoutSession}>
-                  CONFIRMAR PEDIDO
+                  {isCreatingCheckoutSession ? <Spinner /> : 'CONFIRMAR PEDIDO'}
                 </button>
               </CheckoutInfoContainer>
             </CheckoutCartContainer>
